@@ -8,22 +8,23 @@
 import UIKit
 
 class ListingViewController: UIViewController {
-
+    
+    @IBOutlet weak var basketView: UIView!
+    
+    @IBOutlet weak var basketLabel: UILabel!
+    
+    @IBOutlet weak var basketImageView: UIImageView!
+    
+    @IBOutlet weak var horizontalImageView: UICollectionView!
+    
+    @IBOutlet weak var verticalImageView: UICollectionView!
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
