@@ -17,6 +17,8 @@
 		2082EFA02BD993C8006D4978 /* GetirLiteBootcampFinalCaseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2082EF9F2BD993C8006D4978 /* GetirLiteBootcampFinalCaseUITests.swift */; };
 		2082EFA22BD993C8006D4978 /* GetirLiteBootcampFinalCaseUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2082EFA12BD993C8006D4978 /* GetirLiteBootcampFinalCaseUITestsLaunchTests.swift */; };
 		2082EFB32BD99C41006D4978 /* ListingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2082EFB22BD99C41006D4978 /* ListingViewController.swift */; };
+		2082EFB92BD9A08A006D4978 /* VerticalEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2082EFB82BD9A08A006D4978 /* VerticalEntity.swift */; };
+		2082EFBB2BD9A0E2006D4978 /* HorizontalEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2082EFBA2BD9A0E2006D4978 /* HorizontalEntity.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +53,8 @@
 		2082EF9F2BD993C8006D4978 /* GetirLiteBootcampFinalCaseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetirLiteBootcampFinalCaseUITests.swift; sourceTree = "<group>"; };
 		2082EFA12BD993C8006D4978 /* GetirLiteBootcampFinalCaseUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetirLiteBootcampFinalCaseUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		2082EFB22BD99C41006D4978 /* ListingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListingViewController.swift; sourceTree = "<group>"; };
+		2082EFB82BD9A08A006D4978 /* VerticalEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalEntity.swift; sourceTree = "<group>"; };
+		2082EFBA2BD9A0E2006D4978 /* HorizontalEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalEntity.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +153,8 @@
 		2082EFB02BD99558006D4978 /* Listing */ = {
 			isa = PBXGroup;
 			children = (
+				2082EFB62BD9A034006D4978 /* VerticalProducts */,
+				2082EFB42BD9A013006D4978 /* HorizontalProducts */,
 				2082EF812BD993C7006D4978 /* Main.storyboard */,
 				2082EFB22BD99C41006D4978 /* ListingViewController.swift */,
 			);
@@ -160,6 +166,22 @@
 			children = (
 			);
 			path = ProductDetail;
+			sourceTree = "<group>";
+		};
+		2082EFB42BD9A013006D4978 /* HorizontalProducts */ = {
+			isa = PBXGroup;
+			children = (
+				2082EFBA2BD9A0E2006D4978 /* HorizontalEntity.swift */,
+			);
+			path = HorizontalProducts;
+			sourceTree = "<group>";
+		};
+		2082EFB62BD9A034006D4978 /* VerticalProducts */ = {
+			isa = PBXGroup;
+			children = (
+				2082EFB82BD9A08A006D4978 /* VerticalEntity.swift */,
+			);
+			path = VerticalProducts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -294,8 +316,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				2082EF7C2BD993C7006D4978 /* AppDelegate.swift in Sources */,
+				2082EFB92BD9A08A006D4978 /* VerticalEntity.swift in Sources */,
 				2082EF7E2BD993C7006D4978 /* SceneDelegate.swift in Sources */,
 				2082EF862BD993C7006D4978 /* GetirLiteBootcampFinalCase.xcdatamodeld in Sources */,
+				2082EFBB2BD9A0E2006D4978 /* HorizontalEntity.swift in Sources */,
 				2082EFB32BD99C41006D4978 /* ListingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
