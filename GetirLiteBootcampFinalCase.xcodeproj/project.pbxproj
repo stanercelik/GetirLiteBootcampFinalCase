@@ -28,6 +28,9 @@
 		2082EFD32BD9CE44006D4978 /* HorizontalCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2082EFD12BD9CE44006D4978 /* HorizontalCollectionViewCell.swift */; };
 		2082EFD42BD9CE44006D4978 /* HorizontalCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2082EFD22BD9CE44006D4978 /* HorizontalCollectionViewCell.xib */; };
 		2082EFD62BD9D647006D4978 /* ProductDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2082EFD52BD9D647006D4978 /* ProductDetailViewController.swift */; };
+		2082EFDE2BD9DDE9006D4978 /* BasketTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2082EFDC2BD9DDE9006D4978 /* BasketTableViewCell.swift */; };
+		2082EFDF2BD9DDE9006D4978 /* BasketTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2082EFDD2BD9DDE9006D4978 /* BasketTableViewCell.xib */; };
+		2082EFE12BD9DF1D006D4978 /* BasketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2082EFE02BD9DF1D006D4978 /* BasketViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +75,9 @@
 		2082EFD12BD9CE44006D4978 /* HorizontalCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalCollectionViewCell.swift; sourceTree = "<group>"; };
 		2082EFD22BD9CE44006D4978 /* HorizontalCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HorizontalCollectionViewCell.xib; sourceTree = "<group>"; };
 		2082EFD52BD9D647006D4978 /* ProductDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailViewController.swift; sourceTree = "<group>"; };
+		2082EFDC2BD9DDE9006D4978 /* BasketTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketTableViewCell.swift; sourceTree = "<group>"; };
+		2082EFDD2BD9DDE9006D4978 /* BasketTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BasketTableViewCell.xib; sourceTree = "<group>"; };
+		2082EFE02BD9DF1D006D4978 /* BasketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +129,7 @@
 		2082EF7A2BD993C7006D4978 /* GetirLiteBootcampFinalCase */ = {
 			isa = PBXGroup;
 			children = (
+				2082EFD72BD9D863006D4978 /* Utilities */,
 				2082EFAF2BD99541006D4978 /* Module */,
 				2082EFAE2BD994F0006D4978 /* App */,
 				2082EF8C2BD993C8006D4978 /* Info.plist */,
@@ -162,9 +169,8 @@
 		2082EFAF2BD99541006D4978 /* Module */ = {
 			isa = PBXGroup;
 			children = (
-				2082EFD72BD9D863006D4978 /* Utilities */,
 				2082EFC82BD9B07F006D4978 /* Service */,
-				2082EFC52BD9AEDD006D4978 /* Entities */,
+				2082EFDA2BD9DBC5006D4978 /* Basket */,
 				2082EFB12BD9955D006D4978 /* ProductDetail */,
 				2082EFB02BD99558006D4978 /* Listing */,
 			);
@@ -240,6 +246,25 @@
 				2082EFCE2BD9C0EB006D4978 /* Base */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		2082EFDA2BD9DBC5006D4978 /* Basket */ = {
+			isa = PBXGroup;
+			children = (
+				2082EFDB2BD9DC3F006D4978 /* BasketCell */,
+				2082EFC52BD9AEDD006D4978 /* Entities */,
+				2082EFE02BD9DF1D006D4978 /* BasketViewController.swift */,
+			);
+			path = Basket;
+			sourceTree = "<group>";
+		};
+		2082EFDB2BD9DC3F006D4978 /* BasketCell */ = {
+			isa = PBXGroup;
+			children = (
+				2082EFDC2BD9DDE9006D4978 /* BasketTableViewCell.swift */,
+				2082EFDD2BD9DDE9006D4978 /* BasketTableViewCell.xib */,
+			);
+			path = BasketCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -355,6 +380,7 @@
 				2082EFD42BD9CE44006D4978 /* HorizontalCollectionViewCell.xib in Resources */,
 				2082EFBF2BD9A203006D4978 /* VerticalCollectionViewCell.xib in Resources */,
 				2082EF882BD993C8006D4978 /* Assets.xcassets in Resources */,
+				2082EFDF2BD9DDE9006D4978 /* BasketTableViewCell.xib in Resources */,
 				2082EF8B2BD993C8006D4978 /* Base in Resources */,
 				2082EF832BD993C7006D4978 /* Base in Resources */,
 			);
@@ -383,6 +409,8 @@
 			files = (
 				2082EF7C2BD993C7006D4978 /* AppDelegate.swift in Sources */,
 				2082EFB92BD9A08A006D4978 /* VerticalEntity.swift in Sources */,
+				2082EFE12BD9DF1D006D4978 /* BasketViewController.swift in Sources */,
+				2082EFDE2BD9DDE9006D4978 /* BasketTableViewCell.swift in Sources */,
 				2082EFD02BD9C139006D4978 /* BaseViewController.swift in Sources */,
 				2082EF7E2BD993C7006D4978 /* SceneDelegate.swift in Sources */,
 				2082EF862BD993C7006D4978 /* GetirLiteBootcampFinalCase.xcdatamodeld in Sources */,

@@ -1,79 +1,49 @@
-//
-//  ListingViewController.swift
-//  GetirLiteBootcampFinalCase
-//
-//  Created by Taner Çelik on 24.04.2024.
-//
-
 import UIKit
 
 protocol ListingViewControllerProtocol: AnyObject {
     func setupNavigationBar()
     func setupHorizontalScrollView()
     func setupVerticalScrollView()
-    
     func getVerticalData()
     func getHorizontalData()
-    
     func updateBasketView()
-    
     func updateCardData()
 }
 
-class ListingViewController : BaseViewController {
-    
-    
+class ListingViewController: BaseViewController {
     @IBOutlet weak var basketView: UIView!
-    
     @IBOutlet weak var basketLabel: UILabel!
     @IBOutlet weak var basketImageView: UIImageView!
     @IBOutlet weak var horizontalCollectionView: UICollectionView!
-    
     @IBOutlet weak var verticalCollectionView: UICollectionView!
     
-    var horizontalItems : [HorizontalProduct] = []
-    var verticalItems   : [VerticalProduct] = []
-    
-    var selectedHorizontalItem : HorizontalProduct?
-    var selectedVerticalItem : VerticalProduct?
-    
-    
+    var horizontalItems: [HorizontalProduct] = []
+    var verticalItems: [VerticalProduct] = []
+    var selectedHorizontalItem: HorizontalProduct?
+    var selectedVerticalItem: VerticalProduct?
     public var basket = Basket()
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        
         setupHorizontalScrollView()
         setupVerticalScrollView()
         setupNavigationBar()
-        
         getHorizontalData()
         getVerticalData()
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         updateBasketView()
-
-        self.horizontalCollectionView.reloadData()
-
-    }
-    
-    
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
+        horizontalCollectionView.reloadData()
     }
 }
+
 // MARK: - Setup
 extension ListingViewController: ListingViewControllerProtocol {
     func updateCardData() {
-        
+        // Implement if needed
     }
-    
     
     func updateBasketView() {
         var price = Double(basketLabel.text ?? "0.0") ?? 0.0
@@ -84,35 +54,32 @@ extension ListingViewController: ListingViewControllerProtocol {
         for verticalItem in basket.verticalProduct ?? [] {
             price += Double(verticalItem.price ?? 0)
         }
-        self.basketLabel.text = String("₺ \(price)")
+        basketLabel.text = "₺ \(price)"
         
-        if self.basketLabel.text == "0"{
-            self.basketView.isHidden = true
-        }
+        basketView.isHidden = basketLabel.text == "0"
     }
     
     func getVerticalData() {
-        let horizontalURL = URL(string: "https://65c38b5339055e7482c12050.mockapi.io/api/suggestedProducts")!
+        let verticalURL = URL(string: "https://65c38b5339055e7482c12050.mockapi.io/api/suggestedProducts")!
         
-        ProductsService().getHorizontalItems(url: horizontalURL) { (data) in
+        ProductsService().getHorizontalItems(url: verticalURL) { [weak self] data in
+            guard let self = self else { return }
             self.horizontalItems = data?.first?.products ?? []
             DispatchQueue.main.async {
                 self.horizontalCollectionView.reloadData()
             }
-            
         }
     }
     
     func getHorizontalData() {
-        let verticalURL = URL(string: "https://65c38b5339055e7482c12050.mockapi.io/api/products")!
-
-        ProductsService().getVerticalItems(url: verticalURL) { (data) in
-
+        let horizontalURL = URL(string: "https://65c38b5339055e7482c12050.mockapi.io/api/products")!
+        
+        ProductsService().getVerticalItems(url: horizontalURL) { [weak self] data in
+            guard let self = self else { return }
             self.verticalItems = data?.first?.products ?? []
             DispatchQueue.main.async {
                 self.verticalCollectionView.reloadData()
             }
-            
         }
     }
     
@@ -120,16 +87,14 @@ extension ListingViewController: ListingViewControllerProtocol {
         horizontalCollectionView.delegate = self
         horizontalCollectionView.dataSource = self
         horizontalCollectionView.showsHorizontalScrollIndicator = false
-        
-        horizontalCollectionView.register(UINib(nibName: "HorizontalCollectionViewCell", bundle: nil) , forCellWithReuseIdentifier: "horizontalCell")
+        horizontalCollectionView.register(UINib(nibName: "HorizontalCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "horizontalCell")
     }
     
     func setupVerticalScrollView() {
         verticalCollectionView.dataSource = self
         verticalCollectionView.delegate = self
         verticalCollectionView.showsVerticalScrollIndicator = false
-        verticalCollectionView.register(UINib(nibName: "VerticalCollectionViewCell", bundle: nil) , forCellWithReuseIdentifier: "verticalCell")
-
+        verticalCollectionView.register(UINib(nibName: "VerticalCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "verticalCell")
     }
     
     func setupNavigationBar() {
@@ -137,122 +102,110 @@ extension ListingViewController: ListingViewControllerProtocol {
         basketView.layer.cornerRadius = 10
         basketImageView.layer.cornerRadius = 10
         
-        let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
+        let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
         basketView.addGestureRecognizer(tap)
     }
+    
     @objc func handleTap(_ sender: UITapGestureRecognizer? = nil) {
         performSegue(withIdentifier: "toBasketVC", sender: nil)
     }
-    
 }
+
 // MARK: - CollectionView
-extension ListingViewController: UICollectionViewDelegate , UICollectionViewDataSource , UICollectionViewDelegateFlowLayout {
-    
+extension ListingViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
-        if collectionView == self.horizontalCollectionView {
+        if collectionView == horizontalCollectionView {
             return horizontalItems.count
-        }else {
+        } else {
             return verticalItems.count
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        if collectionView == self.horizontalCollectionView {
+        if collectionView == horizontalCollectionView {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "horizontalCell", for: indexPath) as! HorizontalCollectionViewCell
-            
-            cell.horizontalBasket = self.basket.horizontalProduct ?? []
-            
-            cell.horizontalProduct = horizontalItems[indexPath.row]
-            cell.priceLabel.text = horizontalItems[indexPath.row].priceText ?? ""
-            cell.nameLabel.text = horizontalItems[indexPath.row].name ?? ""
-            cell.attributeLabel.text = horizontalItems[indexPath.row].shortDescription?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
-            
-            cell.delegate = self
-            
-            if horizontalItems[indexPath.row].imageURL != nil {
-                cell.imageView.load(url: URL(string: horizontalItems[indexPath.row].imageURL ?? "https://cdn.getir.com/marketing/Getir_Logo_1621812382342.png")!)
-            } else {
-                cell.imageView.load(url: URL(string: horizontalItems[indexPath.row].squareThumbnailURL ?? "https://cdn.getir.com/marketing/Getir_Logo_1621812382342.png")!)
-            }
-            
-            
+            configureHorizontalCell(cell, at: indexPath)
             return cell
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "verticalCell", for: indexPath) as! VerticalCollectionViewCell
-            
-            cell.delegate = self
-            cell.verticalProduct = verticalItems[indexPath.row]
-            
-            cell.priceLabel.text = verticalItems[indexPath.row].priceText ?? ""
-            cell.nameLabel.text = verticalItems[indexPath.row].name ?? ""
-            cell.attributeLabel.text = verticalItems[indexPath.row].shortDescription?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
-            
-            if verticalItems[indexPath.row].imageURL != nil {
-                cell.imageView.load(url: URL(string: verticalItems[indexPath.row].imageURL ?? "https://cdn.getir.com/marketing/Getir_Logo_1621812382342.png")!)
-            } else {
-                cell.imageView.load(url: URL(string: verticalItems[indexPath.row].thumbnailURL ?? "https://cdn.getir.com/marketing/Getir_Logo_1621812382342.png")!)
-            }
+            configureVerticalCell(cell, at: indexPath)
             return cell
         }
     }
     
+    private func configureHorizontalCell(_ cell: HorizontalCollectionViewCell, at indexPath: IndexPath) {
+        let item = horizontalItems[indexPath.row]
+        cell.horizontalBasket = basket.horizontalProduct ?? []
+        cell.horizontalProduct = item
+        cell.priceLabel.text = item.priceText ?? ""
+        cell.nameLabel.text = item.name ?? ""
+        cell.attributeLabel.text = item.shortDescription?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
+        cell.delegate = self
+        let url = URL(string: item.imageURL ?? "https://cdn.getir.com/marketing/Getir_Logo_1621812382342.png")!
+        cell.imageView.load(url: url)
+    }
+    
+    private func configureVerticalCell(_ cell: VerticalCollectionViewCell, at indexPath: IndexPath) {
+        let item = verticalItems[indexPath.row]
+        cell.delegate = self
+        cell.verticalProduct = item
+        cell.priceLabel.text = item.priceText ?? ""
+        cell.nameLabel.text = item.name ?? ""
+        cell.attributeLabel.text = item.shortDescription?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
+        let url = URL(string: item.imageURL ?? "https://cdn.getir.com/marketing/Getir_Logo_1621812382342.png")!
+        cell.imageView.load(url: url)
+    }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if collectionView == self.horizontalCollectionView {
-            let size = (collectionView.frame.size.width)
+        if collectionView == horizontalCollectionView {
+            let size = collectionView.frame.size.width
             return CGSize(width: size - 285, height: 170)
-        }else {
-            let size = (collectionView.frame.size.width - 25)/3
+        } else {
+            let size = (collectionView.frame.size.width - 25) / 3
             return CGSize(width: size, height: (collectionView.frame.height - 20) / 2.3)
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if collectionView == self.horizontalCollectionView {
-            self.selectedHorizontalItem = horizontalItems[indexPath.row]
-            performSegue(withIdentifier: "toProductDetailVC", sender: nil)
-        }else {
-            self.selectedVerticalItem = verticalItems[indexPath.row]
-            performSegue(withIdentifier: "toProductDetailVC", sender: nil)
+        if collectionView == horizontalCollectionView {
+            selectedHorizontalItem = horizontalItems[indexPath.row]
+        } else {
+            selectedVerticalItem = verticalItems[indexPath.row]
         }
+        performSegue(withIdentifier: "toProductDetailVC", sender: nil)
     }
-    
 }
 
 // MARK: - Segue
-
- extension ListingViewController {
-     
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-         if segue.identifier == "toProductDetailVC"{
-             let destination = segue.destination as! ProductDetailViewController
-             destination.horizontalProduct = self.selectedHorizontalItem
-             destination.verticalProduct = self.selectedVerticalItem
-             destination.basket = self.basket
-             destination.delegate = self
-         }
-     }
-     
- }
- 
+extension ListingViewController {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toProductDetailVC" {
+            guard let destination = segue.destination as? ProductDetailViewController else { return }
+            destination.horizontalProduct = selectedHorizontalItem
+            destination.verticalProduct = selectedVerticalItem
+            destination.basket = basket
+            destination.delegate = self
+        } else if segue.identifier == "toBasketVC" {
+            guard let destination = segue.destination as? BasketViewController else { return }
+            destination.basket = basket
+            destination.horizontalItems = horizontalItems
+        }
+    }
+}
 
 // MARK: - ProductDetail Delegate
-
 extension ListingViewController: ProductDetailDelegate {
-    
-    
     func activateBasketView() {
-        self.basketView.isHidden = false
+        basketView.isHidden = false
     }
     
     func deactivateBasketView() {
-        self.basketView.isHidden = true
+        basketView.isHidden = true
         updateBasketView()
     }
     
     func addHorizontalItem(add: HorizontalProduct) {
-        self.basket.horizontalProduct?.append(add)
+        basket.horizontalProduct?.append(add)
         updateBasketView()
     }
     
@@ -260,88 +213,64 @@ extension ListingViewController: ProductDetailDelegate {
         basket.verticalProduct?.append(add)
         updateBasketView()
     }
+    
     func deleteHorizontalItem(product: HorizontalProduct) {
-        do{
-            let index = self.basket.horizontalProduct?.lastIndex(where: { $0.id == product.id })
-            if let index = index {
-                self.basket.horizontalProduct?.remove(at: index)
-            }
+        if let index = basket.horizontalProduct?.lastIndex(where: { $0.id == product.id }) {
+            basket.horizontalProduct?.remove(at: index)
         }
-        
         updateBasketView()
     }
     
     func deleteVerticalItem(product: VerticalProduct) {
-        do{
-            let index = self.basket.verticalProduct?.lastIndex(where: { $0.id == product.id })
-            if let index = index {
-                self.basket.verticalProduct?.remove(at: index)
-            }
+        if let index = basket.verticalProduct?.lastIndex(where: { $0.id == product.id }) {
+            basket.verticalProduct?.remove(at: index)
         }
         updateBasketView()
     }
-    
 }
 
 // MARK: - HorizontalCollectionViewCell Delegate
-extension ListingViewController : HorizontalCollectionViewCellDelegate {
-    
+extension ListingViewController: HorizontalCollectionViewCellDelegate {
     func addHorizontalProduct(product: HorizontalProduct) {
-        self.basket.horizontalProduct?.append(product)
+        basket.horizontalProduct?.append(product)
         updateBasketView()
     }
+    
     func deleteHorizontalProduct(product: HorizontalProduct) {
-        do{
-            let index = self.basket.horizontalProduct?.lastIndex(where: { $0.id == product.id })
-            self.basket.horizontalProduct?.remove(at: index!)
+        if let index = basket.horizontalProduct?.lastIndex(where: { $0.id == product.id }) {
+            basket.horizontalProduct?.remove(at: index)
         }
-        
         updateBasketView()
     }
-    
-       
 }
-// MARK: - VerticalCollectionViewCell Delegate
 
+// MARK: - VerticalCollectionViewCell Delegate
 extension ListingViewController: VerticalCollectionViewCellDelegate {
-    
-    
     func addVerticalProduct(product: VerticalProduct) {
-        self.basket.verticalProduct?.append(product)
+        basket.verticalProduct?.append(product)
         updateBasketView()
     }
     
     func deleteVerticalProduct(product: VerticalProduct) {
-        do{
-            let index = self.basket.verticalProduct?.lastIndex(where: { $0.id == product.id })
-            if let index = index {
-                self.basket.verticalProduct?.remove(at: index)
-            }
-            updateBasketView()
+        if let index = basket.verticalProduct?.lastIndex(where: { $0.id == product.id }) {
+            basket.verticalProduct?.remove(at: index)
         }
-
+        updateBasketView()
     }
-    
-    
 }
 
-/*
- extension ListingViewController: BasketViewControllerDelegate{
-     func DeleteBasket() {
-         self.basket = Basket()
-     }
- }
- */
+extension ListingViewController: BasketViewControllerDelegate {
+    func DeleteBasket() {
+        basket = Basket()
+    }
+}
 
 extension UIImageView {
     func load(url: URL) {
         DispatchQueue.global().async { [weak self] in
-            if let data = try? Data(contentsOf: url) {
-                if let image = UIImage(data: data) {
-                    DispatchQueue.main.async {
-                        self?.image = image
-                    }
-                }
+            guard let data = try? Data(contentsOf: url), let image = UIImage(data: data) else { return }
+            DispatchQueue.main.async {
+                self?.image = image
             }
         }
     }
