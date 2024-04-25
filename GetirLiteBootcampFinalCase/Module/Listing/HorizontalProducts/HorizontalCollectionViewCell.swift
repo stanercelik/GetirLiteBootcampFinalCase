@@ -2,7 +2,7 @@
 //  HorizontalCollectionViewCell.swift
 //  GetirLiteBootcampFinalCase
 //
-//  Created by Taner Çelik on 24.04.2024.
+//  Created by Taner Çelik on 25.04.2024.
 //
 
 import UIKit
