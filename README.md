@@ -20,7 +20,7 @@ This project involves creating simplified versions of three pages from the Getir
 
   
 ## Screenshots
-![Uygulama Ekran Görüntüsü](https://ibb.co/x1MS4GC)
+![Uygulama Ekran Görüntüsü](https://i.ibb.co/fkCYct1/image.png)
 ![Uygulama Videosu](https://s6.ezgif.com/tmp/ezgif-6-6fafbb0997.gif)
 
   
