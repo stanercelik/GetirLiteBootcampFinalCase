@@ -19,6 +19,15 @@
 		2082EFB32BD99C41006D4978 /* ListingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2082EFB22BD99C41006D4978 /* ListingViewController.swift */; };
 		2082EFB92BD9A08A006D4978 /* VerticalEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2082EFB82BD9A08A006D4978 /* VerticalEntity.swift */; };
 		2082EFBB2BD9A0E2006D4978 /* HorizontalEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2082EFBA2BD9A0E2006D4978 /* HorizontalEntity.swift */; };
+		2082EFBE2BD9A203006D4978 /* VerticalCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2082EFBC2BD9A203006D4978 /* VerticalCollectionViewCell.swift */; };
+		2082EFBF2BD9A203006D4978 /* VerticalCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2082EFBD2BD9A203006D4978 /* VerticalCollectionViewCell.xib */; };
+		2082EFC72BD9AEED006D4978 /* Basket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2082EFC62BD9AEED006D4978 /* Basket.swift */; };
+		2082EFCA2BD9B0A6006D4978 /* ProductsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2082EFC92BD9B0A6006D4978 /* ProductsService.swift */; };
+		2082EFCD2BD9B2D8006D4978 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 2082EFCC2BD9B2D8006D4978 /* Alamofire */; };
+		2082EFD02BD9C139006D4978 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2082EFCF2BD9C139006D4978 /* BaseViewController.swift */; };
+		2082EFD32BD9CE44006D4978 /* HorizontalCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2082EFD12BD9CE44006D4978 /* HorizontalCollectionViewCell.swift */; };
+		2082EFD42BD9CE44006D4978 /* HorizontalCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2082EFD22BD9CE44006D4978 /* HorizontalCollectionViewCell.xib */; };
+		2082EFD62BD9D647006D4978 /* ProductDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2082EFD52BD9D647006D4978 /* ProductDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +64,14 @@
 		2082EFB22BD99C41006D4978 /* ListingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListingViewController.swift; sourceTree = "<group>"; };
 		2082EFB82BD9A08A006D4978 /* VerticalEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalEntity.swift; sourceTree = "<group>"; };
 		2082EFBA2BD9A0E2006D4978 /* HorizontalEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalEntity.swift; sourceTree = "<group>"; };
+		2082EFBC2BD9A203006D4978 /* VerticalCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalCollectionViewCell.swift; sourceTree = "<group>"; };
+		2082EFBD2BD9A203006D4978 /* VerticalCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VerticalCollectionViewCell.xib; sourceTree = "<group>"; };
+		2082EFC62BD9AEED006D4978 /* Basket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Basket.swift; sourceTree = "<group>"; };
+		2082EFC92BD9B0A6006D4978 /* ProductsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsService.swift; sourceTree = "<group>"; };
+		2082EFCF2BD9C139006D4978 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		2082EFD12BD9CE44006D4978 /* HorizontalCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalCollectionViewCell.swift; sourceTree = "<group>"; };
+		2082EFD22BD9CE44006D4978 /* HorizontalCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HorizontalCollectionViewCell.xib; sourceTree = "<group>"; };
+		2082EFD52BD9D647006D4978 /* ProductDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +79,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2082EFCD2BD9B2D8006D4978 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -144,6 +162,9 @@
 		2082EFAF2BD99541006D4978 /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				2082EFD72BD9D863006D4978 /* Utilities */,
+				2082EFC82BD9B07F006D4978 /* Service */,
+				2082EFC52BD9AEDD006D4978 /* Entities */,
 				2082EFB12BD9955D006D4978 /* ProductDetail */,
 				2082EFB02BD99558006D4978 /* Listing */,
 			);
@@ -164,6 +185,7 @@
 		2082EFB12BD9955D006D4978 /* ProductDetail */ = {
 			isa = PBXGroup;
 			children = (
+				2082EFD52BD9D647006D4978 /* ProductDetailViewController.swift */,
 			);
 			path = ProductDetail;
 			sourceTree = "<group>";
@@ -172,6 +194,8 @@
 			isa = PBXGroup;
 			children = (
 				2082EFBA2BD9A0E2006D4978 /* HorizontalEntity.swift */,
+				2082EFD12BD9CE44006D4978 /* HorizontalCollectionViewCell.swift */,
+				2082EFD22BD9CE44006D4978 /* HorizontalCollectionViewCell.xib */,
 			);
 			path = HorizontalProducts;
 			sourceTree = "<group>";
@@ -180,8 +204,42 @@
 			isa = PBXGroup;
 			children = (
 				2082EFB82BD9A08A006D4978 /* VerticalEntity.swift */,
+				2082EFBC2BD9A203006D4978 /* VerticalCollectionViewCell.swift */,
+				2082EFBD2BD9A203006D4978 /* VerticalCollectionViewCell.xib */,
 			);
 			path = VerticalProducts;
+			sourceTree = "<group>";
+		};
+		2082EFC52BD9AEDD006D4978 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				2082EFC62BD9AEED006D4978 /* Basket.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		2082EFC82BD9B07F006D4978 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				2082EFC92BD9B0A6006D4978 /* ProductsService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		2082EFCE2BD9C0EB006D4978 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				2082EFCF2BD9C139006D4978 /* BaseViewController.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		2082EFD72BD9D863006D4978 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				2082EFCE2BD9C0EB006D4978 /* Base */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -200,6 +258,9 @@
 			dependencies = (
 			);
 			name = GetirLiteBootcampFinalCase;
+			packageProductDependencies = (
+				2082EFCC2BD9B2D8006D4978 /* Alamofire */,
+			);
 			productName = GetirLiteBootcampFinalCase;
 			productReference = 2082EF782BD993C7006D4978 /* GetirLiteBootcampFinalCase.app */;
 			productType = "com.apple.product-type.application";
@@ -272,6 +333,9 @@
 				Base,
 			);
 			mainGroup = 2082EF6F2BD993C7006D4978;
+			packageReferences = (
+				2082EFCB2BD9B2D8006D4978 /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			productRefGroup = 2082EF792BD993C7006D4978 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -288,6 +352,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2082EFD42BD9CE44006D4978 /* HorizontalCollectionViewCell.xib in Resources */,
+				2082EFBF2BD9A203006D4978 /* VerticalCollectionViewCell.xib in Resources */,
 				2082EF882BD993C8006D4978 /* Assets.xcassets in Resources */,
 				2082EF8B2BD993C8006D4978 /* Base in Resources */,
 				2082EF832BD993C7006D4978 /* Base in Resources */,
@@ -317,10 +383,16 @@
 			files = (
 				2082EF7C2BD993C7006D4978 /* AppDelegate.swift in Sources */,
 				2082EFB92BD9A08A006D4978 /* VerticalEntity.swift in Sources */,
+				2082EFD02BD9C139006D4978 /* BaseViewController.swift in Sources */,
 				2082EF7E2BD993C7006D4978 /* SceneDelegate.swift in Sources */,
 				2082EF862BD993C7006D4978 /* GetirLiteBootcampFinalCase.xcdatamodeld in Sources */,
+				2082EFD62BD9D647006D4978 /* ProductDetailViewController.swift in Sources */,
 				2082EFBB2BD9A0E2006D4978 /* HorizontalEntity.swift in Sources */,
+				2082EFD32BD9CE44006D4978 /* HorizontalCollectionViewCell.swift in Sources */,
+				2082EFBE2BD9A203006D4978 /* VerticalCollectionViewCell.swift in Sources */,
+				2082EFC72BD9AEED006D4978 /* Basket.swift in Sources */,
 				2082EFB32BD99C41006D4978 /* ListingViewController.swift in Sources */,
+				2082EFCA2BD9B0A6006D4978 /* ProductsService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -667,6 +739,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		2082EFCB2BD9B2D8006D4978 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.9.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		2082EFCC2BD9B2D8006D4978 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2082EFCB2BD9B2D8006D4978 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		2082EF842BD993C7006D4978 /* GetirLiteBootcampFinalCase.xcdatamodeld */ = {
